@@ -76,10 +76,15 @@ construction-einvoice/
 └── DataBase.sql       # MySQL schema
 ```
 
-## 📌 Author
+## 👥 Team
 
-**Hussain Ali A. Aziz Ali** — Information Systems Graduate, University of Bahrain
-[GitHub](https://github.com/HussainAliAbdulAzizAli)
+This was a team senior graduation project — University of Bahrain, College of Information Technology.
+
+| Name | Role |
+|---|---|
+| **Hussain Ali A. Aziz Ali** | Full-stack development — [GitHub](https://github.com/HussainAliAbdulAzizAli) |
+| **Abdulaziz Mohammad** | Backend & data automation (OCR invoice import) |
+| **Arfaj Alkaabi** | Front-end development & UI |
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=1F4E79&height=100&section=footer" />
