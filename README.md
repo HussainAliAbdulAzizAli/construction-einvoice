@@ -45,7 +45,7 @@ A full-stack web application that digitizes invoicing for construction projects 
 
 | Home / Landing Page | Invoice Upload |
 |---|---|
-| ![Home](./screenshots/home-landing.png) | ![Invoice Upload](./screenshots/invoice-upload.png) |
+| ![Home](./home-landing.png) | ![Invoice Upload](./invoice-upload.png) |
 
 ## 🚀 Getting Started
 
