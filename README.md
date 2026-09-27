@@ -43,11 +43,9 @@ A full-stack web application that digitizes invoicing for construction projects 
 
 ## 📸 Screenshots
 
-> _Add screenshots here once the repo is live — e.g. dashboard, invoice upload, PDF output._
-
-| Dashboard | Invoice Upload | Financial Reports |
-|---|---|---|
-| _screenshot_ | _screenshot_ | _screenshot_ |
+| Home / Landing Page | Invoice Upload |
+|---|---|
+| ![Home](./screenshots/home-landing.png) | ![Invoice Upload](./screenshots/invoice-upload.png) |
 
 ## 🚀 Getting Started
 
