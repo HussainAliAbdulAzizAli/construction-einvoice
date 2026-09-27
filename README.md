@@ -81,7 +81,6 @@ construction-einvoice/
 This was a team senior graduation project — University of Bahrain, College of Information Technology.
 
 **Hussain Ali A. Aziz Ali**
-[GitHub](https://github.com/HussainAliAbdulAzizAli)
 
 **Abdulaziz Mohammad**
 
