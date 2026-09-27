@@ -80,12 +80,12 @@ construction-einvoice/
 
 This was a team senior graduation project — University of Bahrain, College of Information Technology.
 
-**Hussain Ali A. Aziz Ali** — Full-stack development
+**Hussain Ali A. Aziz Ali**
 [GitHub](https://github.com/HussainAliAbdulAzizAli)
 
-**Abdulaziz Mohammad** — Backend & data automation (OCR invoice import)
+**Abdulaziz Mohammad**
 
-**Arfaj Alkaabi** — Front-end development & UI
+**Arfaj Alkaabi**
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=1F4E79&height=100&section=footer" />
