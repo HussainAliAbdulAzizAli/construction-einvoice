@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — ConstruInvoice</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue-50: #EFF6FF;
+            --blue-100: #DBEAFE;
+            --blue-500: #3B82F6;
+            --blue-600: #2563EB;
+            --blue-700: #1D4ED8;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --green-500: #22C55E;
+            --red-500: #EF4444;
+            --red-50: #FEF2F2;
+            --red-100: #FEE2E2;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--gray-50);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-900);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--blue-600);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gray-900);
+            letter-spacing: -0.3px;
+        }
+
+        .brand-name span {
+            color: var(--blue-600);
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 28px;
+        }
+
+        .alert {
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .alert-error {
+            background: var(--red-50);
+            border: 1px solid var(--red-100);
+            color: #B91C1C;
+        }
+
+        .alert-success {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            color: #15803D;
+        }
+
+        .alert svg {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--gray-400);
+            width: 17px;
+            height: 17px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            height: 44px;
+            padding: 0 44px 0 42px;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--gray-900);
+            background: white;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            outline: none;
+        }
+
+        .input-wrapper input::placeholder {
+            color: var(--gray-400);
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--blue-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+        }
+
+        .input-wrapper input.is-valid {
+            border-color: var(--green-500);
+        }
+
+        .input-wrapper input.is-error {
+            border-color: var(--red-500);
+        }
+
+        .input-suffix {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .toggle-pw {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            color: var(--gray-400);
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            transition: color 0.15s;
+        }
+
+        .toggle-pw:hover {
+            color: var(--gray-600);
+        }
+
+        .toggle-pw svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .status-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .status-icon.valid {
+            color: var(--green-500);
+        }
+
+        .status-icon.error {
+            color: var(--red-500);
+        }
+
+        .field-hint {
+            font-size: 12px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .field-hint svg {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
+        }
+
+        .field-hint.valid {
+            color: #16A34A;
+        }
+
+        .field-hint.error {
+            color: #DC2626;
+        }
+
+        .row-between {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--gray-600);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--blue-600);
+            cursor: pointer;
+        }
+
+        .link {
+            font-size: 14px;
+            color: var(--blue-600);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            width: 100%;
+            height: 46px;
+            background: var(--blue-600);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--blue-700);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:active:not(:disabled) {
+            transform: scale(0.99);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--gray-200);
+            margin: 28px 0;
+        }
+
+        .card-footer {
+            text-align: center;
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .badge-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--gray-400);
+        }
+
+        .badge svg {
+            width: 14px;
+            height: 14px;
+            color: var(--gray-300);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            15%,
+            45%,
+            75% {
+                transform: translateX(-5px);
+            }
+
+            30%,
+            60%,
+            90% {
+                transform: translateX(5px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.45s ease;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                margin: 16px;
+                padding: 28px 24px;
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-header">
+        <a href="/" class="brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="white" stroke-width="1.5"
+                        stroke-linecap="round" />
+                </svg>
+            </div>
+            <span class="brand-name">Constru<span>Invoice</span></span>
+        </a>
+    </div>
+
+    <div class="card" id="loginCard">
+        <h1 class="card-title">Welcome back</h1>
+        <p class="card-subtitle">Sign in to your ConstruInvoice account</p>
+
+        <div id="alertBox" style="display:none;"></div>
+
+        <form id="loginForm" novalidate>
+            <div class="form-group">
+                <label for="username">Username or email</label>
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <input type="text" id="username" name="username" placeholder="Enter your username or email"
+                        autocomplete="username" autocorrect="off" autocapitalize="off">
+                    <div class="input-suffix" id="usernameStatus"></div>
+                </div>
+                <div class="field-hint" id="usernameHint" style="display:none;"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0110 0v4" />
+                    </svg>
+                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                        autocomplete="current-password">
+                    <div class="input-suffix">
+                        <div class="input-suffix" id="passwordStatus"></div>
+                        <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password visibility">
+                            <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="field-hint" id="passwordHint" style="display:none;"></div>
+            </div>
+
+            <div class="row-between">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="rememberMe"> Remember me
+                </label>
+                <a href="/forgot-password" class="link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-primary" id="submitBtn">
+                <span id="btnText">Sign in</span>
+            </button>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="card-footer">
+            Don't have an account? <a href="/signup" class="link">Create account</a>
+        </div>
+    </div>
+
+    <div class="badge-row">
+        <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" />
+                <path d="M7 11V7a5 5 0 0110 0v4" />
+            </svg>
+            SSL Secured
+        </div>
+        <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            Privacy Protected
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = '/api';
+
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const usernameStatus = document.getElementById('usernameStatus');
+        const passwordStatus = document.getElementById('passwordStatus');
+        const usernameHint = document.getElementById('usernameHint');
+        const passwordHint = document.getElementById('passwordHint');
+        const togglePw = document.getElementById('togglePw');
+        const eyeIcon = document.getElementById('eyeIcon');
+        const submitBtn = document.getElementById('submitBtn');
+        const rememberMe = document.getElementById('rememberMe');
+        const loginCard = document.getElementById('loginCard');
+
+        const CHECK_ICON = `<svg class="status-icon valid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+        const X_ICON = `<svg class="status-icon error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+        const INFO_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+        const CHECK_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+        const EYE_SLASH = `<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/><circle cx="12" cy="12" r="3"/>`;
+        const EYE_OPEN = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+
+        const saved = localStorage.getItem('ci_rememberedUser');
+        if (saved) { usernameInput.value = saved; rememberMe.checked = true; }
+
+        function setFieldState(input, statusEl, hintEl, state, message) {
+            input.classList.remove('is-valid', 'is-error');
+            if (state === 'valid') {
+                input.classList.add('is-valid');
+                statusEl.innerHTML = CHECK_ICON;
+                if (message) { hintEl.innerHTML = CHECK_SVG + message; hintEl.className = 'field-hint valid'; hintEl.style.display = 'flex'; }
+                else { hintEl.style.display = 'none'; }
+            } else if (state === 'error') {
+                input.classList.add('is-error');
+                statusEl.innerHTML = X_ICON;
+                if (message) { hintEl.innerHTML = INFO_SVG + message; hintEl.className = 'field-hint error'; hintEl.style.display = 'flex'; }
+                else { hintEl.style.display = 'none'; }
+            } else {
+                statusEl.innerHTML = '';
+                hintEl.style.display = 'none';
+            }
+        }
+
+        function validateUsername() {
+            const val = usernameInput.value.trim();
+            if (!val) { setFieldState(usernameInput, usernameStatus, usernameHint, 'none'); return false; }
+            if (val.length < 3) { setFieldState(usernameInput, usernameStatus, usernameHint, 'error', 'At least 3 characters required'); return false; }
+            setFieldState(usernameInput, usernameStatus, usernameHint, 'valid');
+            return true;
+        }
+
+        function validatePassword() {
+            const val = passwordInput.value;
+            if (!val) { setFieldState(passwordInput, passwordStatus, passwordHint, 'none'); return false; }
+            if (val.length < 6) { setFieldState(passwordInput, passwordStatus, passwordHint, 'error', 'At least 6 characters required'); return false; }
+            setFieldState(passwordInput, passwordStatus, passwordHint, 'valid');
+            return true;
+        }
+
+        usernameInput.addEventListener('input', validateUsername);
+        passwordInput.addEventListener('input', validatePassword);
+
+        usernameInput.addEventListener('blur', () => { if (usernameInput.value) validateUsername(); });
+        passwordInput.addEventListener('blur', () => { if (passwordInput.value) validatePassword(); });
+
+        let pwVisible = false;
+        togglePw.addEventListener('click', () => {
+            pwVisible = !pwVisible;
+            passwordInput.type = pwVisible ? 'text' : 'password';
+            eyeIcon.innerHTML = pwVisible ? EYE_SLASH : EYE_OPEN;
+        });
+
+        function showAlert(msg, type) {
+            const box = document.getElementById('alertBox');
+            const icon = type === 'error'
+                ? `<svg style="width:16px;height:16px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`
+                : `<svg style="width:16px;height:16px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+            box.innerHTML = `<div class="alert alert-${type}">${icon}<span>${msg}</span></div>`;
+            box.style.display = 'block';
+            if (type === 'success') return;
+            setTimeout(() => { box.style.display = 'none'; }, 5000);
+        }
+
+        function setLoading(loading) {
+            const btnText = document.getElementById('btnText');
+            if (loading) {
+                btnText.textContent = '';
+                submitBtn.innerHTML = `<div class="spinner"></div><span>Signing in…</span>`;
+                submitBtn.disabled = true;
+            } else {
+                submitBtn.innerHTML = `<span id="btnText">Sign in</span>`;
+                submitBtn.disabled = false;
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: document.getElementById('username').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    window.location.href = '/dashboard';
+                } else {
+                    alert(data.error || 'Login failed');
+                }
+
+            } catch (err) {
+                console.error(err);
+                alert('Network error');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Link Expired - ConstruInvoice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 450px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .expired-icon {
+            color: #ef4444;
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        p {
+            color: #6b7280;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .notice {
+            background: #fef3c7;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #92400e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <i class="fas fa-clock expired-icon"></i>
+        <h1>Payment Link Expired or Invalid</h1>
+        <p>This payment confirmation link has expired or is no longer valid.</p>
+        <div class="notice">
+            <i class="fas fa-info-circle"></i> Please contact the invoice sender for assistance.
+        </div>
+        <a href="/" class="btn" style="margin-top: 20px;">Return to Home</a>
+    </div>
+</body>
+
+</html>

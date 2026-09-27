@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — ConstruInvoice</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-600: #2563EB;
+            --blue-700: #1D4ED8;
+            --teal-600: #0D9488;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0 32px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--blue-600);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-900);
+            letter-spacing: -0.3px;
+        }
+
+        .brand-name span { color: var(--blue-600); }
+
+        .topbar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .topbar-links a {
+            font-size: 14px;
+            color: var(--gray-500);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .topbar-links a:hover { color: var(--blue-600); }
+        .topbar-links a.active { color: var(--blue-600); }
+
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 56px 24px 100px;
+        }
+
+        .doc-hero {
+            margin-bottom: 48px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .doc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            border-radius: 100px;
+            padding: 4px 12px 4px 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gray-500);
+            margin-bottom: 20px;
+        }
+
+        .doc-badge svg { width: 14px; height: 14px; color: var(--teal-600); }
+
+        .doc-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 40px;
+            font-weight: 400;
+            color: var(--gray-900);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .doc-meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .doc-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        .doc-meta-item svg { width: 14px; height: 14px; }
+
+        .toc {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 48px;
+        }
+
+        .toc-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-400);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 32px;
+        }
+
+        .toc-list a {
+            font-size: 14px;
+            color: var(--blue-600);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .toc-list a:hover { text-decoration: underline; }
+
+        .toc-num {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-300);
+            min-width: 18px;
+        }
+
+        .section {
+            margin-bottom: 48px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .section-num {
+            width: 32px;
+            height: 32px;
+            background: var(--teal-600);
+            color: white;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gray-900);
+            letter-spacing: -0.2px;
+        }
+
+        .section p {
+            font-size: 15px;
+            color: var(--gray-600);
+            margin-bottom: 14px;
+            line-height: 1.75;
+        }
+
+        .section p:last-child { margin-bottom: 0; }
+
+        .section ul, .section ol {
+            padding-left: 20px;
+            margin-bottom: 14px;
+        }
+
+        .section li {
+            font-size: 15px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+            line-height: 1.65;
+        }
+
+        .highlight-box {
+            background: #F0FDFA;
+            border: 1px solid #99F6E4;
+            border-left: 3px solid var(--teal-600);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            color: #0F766E;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .highlight-box strong { font-weight: 600; }
+
+        /* Data table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+
+        .data-table th {
+            background: var(--gray-100);
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-500);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--gray-100);
+            color: var(--gray-600);
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:nth-child(even) td { background: var(--gray-50); }
+
+        .doc-footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .doc-footer p { font-size: 13px; color: var(--gray-400); }
+
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { font-size: 13px; color: var(--gray-500); text-decoration: none; }
+        .footer-links a:hover { color: var(--blue-600); text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .doc-title { font-size: 28px; }
+            .toc-list { grid-template-columns: 1fr; }
+            .topbar { padding: 0 16px; }
+            .topbar-links { display: none; }
+            .data-table { font-size: 13px; }
+            .data-table th, .data-table td { padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="topbar">
+    <a href="/" class="brand">
+        <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        </div>
+        <span class="brand-name">Constru<span>Invoice</span></span>
+    </a>
+    <div class="topbar-links">
+        <a href="/terms">Terms of Service</a>
+        <a href="/privacy" class="active">Privacy Policy</a>
+        <a href="/login">Sign in</a>
+    </div>
+</nav>
+
+<div class="page">
+    <div class="doc-hero">
+        <div class="doc-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Privacy Document
+        </div>
+        <h1 class="doc-title">Privacy Policy</h1>
+        <div class="doc-meta">
+            <div class="doc-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Effective: January 1, 2025
+            </div>
+            <div class="doc-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Last updated: January 1, 2025
+            </div>
+        </div>
+    </div>
+
+    <div class="toc">
+        <div class="toc-title">Contents</div>
+        <ul class="toc-list">
+            <li><a href="#s1"><span class="toc-num">01</span> Information We Collect</a></li>
+            <li><a href="#s2"><span class="toc-num">02</span> How We Use Your Data</a></li>
+            <li><a href="#s3"><span class="toc-num">03</span> Data Storage & Security</a></li>
+            <li><a href="#s4"><span class="toc-num">04</span> Sharing of Information</a></li>
+            <li><a href="#s5"><span class="toc-num">05</span> Cookies & Sessions</a></li>
+            <li><a href="#s6"><span class="toc-num">06</span> Audit Logs</a></li>
+            <li><a href="#s7"><span class="toc-num">07</span> Your Rights</a></li>
+            <li><a href="#s8"><span class="toc-num">08</span> Data Retention</a></li>
+            <li><a href="#s9"><span class="toc-num">09</span> Children's Privacy</a></li>
+            <li><a href="#s10"><span class="toc-num">10</span> Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div class="highlight-box">
+        <p><strong>Your privacy matters to us.</strong> ConstruInvoice is a business tool for managing construction invoices. We collect only what is necessary to provide the service, and we do not sell your personal information or invoice data to third parties.</p>
+    </div>
+
+    <div class="section" id="s1">
+        <div class="section-header">
+            <div class="section-num">1</div>
+            <h2 class="section-title">Information We Collect</h2>
+        </div>
+        <p>We collect information you provide directly to us and information generated through your use of the platform:</p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Data Collected</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Account data</strong></td>
+                    <td>Username, email address, full name, encrypted password, account role</td>
+                    <td>Provided by you at registration</td>
+                </tr>
+                <tr>
+                    <td><strong>Invoice data</strong></td>
+                    <td>Invoice files, vendor/customer details, financial amounts, project information, line items</td>
+                    <td>Uploaded by you</td>
+                </tr>
+                <tr>
+                    <td><strong>Usage data</strong></td>
+                    <td>Actions performed (uploads, views, edits, exports), timestamps, IP address, browser type</td>
+                    <td>Automatically collected</td>
+                </tr>
+                <tr>
+                    <td><strong>Session data</strong></td>
+                    <td>Session identifiers, last activity timestamp, device information</td>
+                    <td>Automatically collected</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>We do not collect payment information directly — if billing features are introduced, they will be handled by a certified third-party payment processor.</p>
+    </div>
+
+    <div class="section" id="s2">
+        <div class="section-header">
+            <div class="section-num">2</div>
+            <h2 class="section-title">How We Use Your Data</h2>
+        </div>
+        <p>We use the information we collect for the following purposes:</p>
+        <ul>
+            <li><strong>Providing the service:</strong> Authenticating your account, storing and displaying your invoices, and enabling all platform features</li>
+            <li><strong>Security and fraud prevention:</strong> Detecting and preventing unauthorized access, suspicious activity, or abuse of the platform</li>
+            <li><strong>Audit and compliance:</strong> Maintaining an immutable log of all actions for accountability and dispute resolution</li>
+            <li><strong>Service improvements:</strong> Analyzing usage patterns in aggregate to improve performance and features</li>
+            <li><strong>Communications:</strong> Sending account-related notifications such as security alerts or policy updates</li>
+        </ul>
+        <p>We do not use your invoice data or personal information for advertising, profiling, or any purpose unrelated to delivering the ConstruInvoice service.</p>
+    </div>
+
+    <div class="section" id="s3">
+        <div class="section-header">
+            <div class="section-num">3</div>
+            <h2 class="section-title">Data Storage & Security</h2>
+        </div>
+        <p>Your data is stored on secured servers. We implement multiple layers of security to protect your information:</p>
+        <ul>
+            <li><strong>Encryption in transit:</strong> All data transmitted between your browser and our servers uses SSL/TLS encryption</li>
+            <li><strong>Password hashing:</strong> Passwords are stored using bcrypt hashing and are never stored in plain text</li>
+            <li><strong>Access controls:</strong> Role-based access ensures users can only access data they are authorized to view</li>
+            <li><strong>Session management:</strong> Active sessions are tracked and can be terminated; sessions expire after inactivity</li>
+        </ul>
+        <p>While we implement robust security practices, no method of data transmission over the internet is 100% secure. In the event of a data breach, we will notify affected users in accordance with applicable laws.</p>
+    </div>
+
+    <div class="section" id="s4">
+        <div class="section-header">
+            <div class="section-num">4</div>
+            <h2 class="section-title">Sharing of Information</h2>
+        </div>
+        <p>We do not sell, rent, or trade your personal information or invoice data to any third parties. We may share information only in the following limited circumstances:</p>
+        <ul>
+            <li><strong>With your consent:</strong> When you explicitly authorize us to share specific data</li>
+            <li><strong>Service providers:</strong> Trusted vendors who assist in operating the platform (hosting, email delivery) under strict data processing agreements</li>
+            <li><strong>Legal compliance:</strong> When required by law, court order, or government authority</li>
+            <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of company assets, with user notification</li>
+            <li><strong>Safety:</strong> To protect the rights, property, or safety of ConstruInvoice, our users, or the public</li>
+        </ul>
+    </div>
+
+    <div class="section" id="s5">
+        <div class="section-header">
+            <div class="section-num">5</div>
+            <h2 class="section-title">Cookies & Sessions</h2>
+        </div>
+        <p>ConstruInvoice uses cookies and session tokens to maintain your authenticated state and improve your experience. We use:</p>
+        <ul>
+            <li><strong>Session cookies:</strong> Required for authentication; these expire when you close your browser or log out</li>
+            <li><strong>Persistent cookies:</strong> Used only for the "Remember me" feature on login, storing your username locally for convenience</li>
+            <li><strong>Functional cookies:</strong> Used to remember your preferences within the platform</li>
+        </ul>
+        <p>We do not use tracking cookies, advertising cookies, or third-party analytics cookies. You can clear cookies at any time through your browser settings, though this will log you out of the platform.</p>
+    </div>
+
+    <div class="section" id="s6">
+        <div class="section-header">
+            <div class="section-num">6</div>
+            <h2 class="section-title">Audit Logs</h2>
+        </div>
+        <p>ConstruInvoice maintains a comprehensive audit trail of all user actions within the platform, including uploads, views, edits, deletions, downloads, and exports. This audit log records:</p>
+        <ul>
+            <li>The action performed and timestamp</li>
+            <li>The user who performed the action (username and email)</li>
+            <li>The IP address from which the action was performed</li>
+            <li>Details of any changes made (for edit actions)</li>
+        </ul>
+        <p>Audit logs are immutable — they cannot be edited or deleted through the platform interface. This is an intentional security and compliance feature. Audit logs are retained for a minimum of 12 months and may be used for dispute resolution, security investigations, and compliance purposes.</p>
+    </div>
+
+    <div class="section" id="s7">
+        <div class="section-header">
+            <div class="section-num">7</div>
+            <h2 class="section-title">Your Rights</h2>
+        </div>
+        <p>You have the following rights regarding your personal data:</p>
+        <ul>
+            <li><strong>Access:</strong> Request a copy of the personal data we hold about you</li>
+            <li><strong>Correction:</strong> Request correction of inaccurate personal information</li>
+            <li><strong>Deletion:</strong> Request deletion of your account and associated personal data (note: audit log entries are retained for compliance)</li>
+            <li><strong>Data portability:</strong> Request an export of your invoice data in a machine-readable format</li>
+            <li><strong>Objection:</strong> Object to certain processing of your personal data</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us at privacy@construinvoice.com. We will respond to verified requests within 30 days.</p>
+    </div>
+
+    <div class="section" id="s8">
+        <div class="section-header">
+            <div class="section-num">8</div>
+            <h2 class="section-title">Data Retention</h2>
+        </div>
+        <p>We retain your data for as long as your account is active or as necessary to provide you with the service. Specifically:</p>
+        <ul>
+            <li><strong>Account data:</strong> Retained while your account is active; deleted within 90 days of account termination upon request</li>
+            <li><strong>Invoice data:</strong> Retained for the duration of your account; you may delete individual invoices at any time</li>
+            <li><strong>Audit logs:</strong> Retained for a minimum of 12 months for compliance and security purposes</li>
+            <li><strong>Session data:</strong> Automatically purged after session expiration</li>
+        </ul>
+        <p>If you close your account, we may retain certain information as required by law or for legitimate business purposes such as resolving disputes or enforcing agreements.</p>
+    </div>
+
+    <div class="section" id="s9">
+        <div class="section-header">
+            <div class="section-num">9</div>
+            <h2 class="section-title">Children's Privacy</h2>
+        </div>
+        <p>ConstruInvoice is a professional business platform intended solely for use by adults aged 18 and over. We do not knowingly collect, solicit, or store personal information from individuals under 18 years of age.</p>
+        <p>If you believe a minor has provided us with personal information, please contact us immediately at privacy@construinvoice.com and we will take steps to delete that information promptly.</p>
+    </div>
+
+    <div class="section" id="s10">
+        <div class="section-header">
+            <div class="section-num">10</div>
+            <h2 class="section-title">Contact Us</h2>
+        </div>
+        <p>If you have questions, concerns, or requests regarding this Privacy Policy or how we handle your data, please reach out:</p>
+        <ul>
+            <li><strong>Privacy inquiries:</strong> privacy@construinvoice.com</li>
+            <li><strong>General support:</strong> support@construinvoice.com</li>
+            <li><strong>Security concerns:</strong> security@construinvoice.com</li>
+        </ul>
+        <p>We take privacy concerns seriously and will respond to all inquiries within 5 business days.</p>
+    </div>
+
+    <div class="doc-footer">
+        <p>© 2025 ConstruInvoice. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/terms">Terms of Service</a>
+            <a href="/login">Sign in</a>
+            <a href="/signup">Create account</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

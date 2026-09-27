@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Payment - ConstruInvoice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2563eb;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header i {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .warning-banner {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 14px;
+            border-bottom: 1px solid #fcd34d;
+        }
+
+        .body {
+            padding: 30px;
+        }
+
+        .invoice-details {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .total-amount {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2563eb;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+
+        .items-table th {
+            background: #f3f4f6;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .items-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .btn-confirm {
+            width: 100%;
+            background: #059669;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-confirm:hover {
+            background: #047857;
+            transform: translateY(-2px);
+        }
+
+        .btn-confirm:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-back {
+            width: 100%;
+            background: #6b7280;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            background: #4b5563;
+        }
+
+        .secure-badge {
+            text-align: center;
+            margin-top: 20px;
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .success-icon {
+            color: #10b981;
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <h1>Confirm Payment</h1>
+            <p>Verify invoice payment</p>
+        </div>
+
+        {% if is_overdue %}
+        <div class="warning-banner">
+            <i class="fas fa-exclamation-triangle"></i> This invoice is past its due date. Payment confirmation will
+            still be accepted.
+        </div>
+        {% endif %}
+
+        <div class="body" id="paymentBody">
+            <div class="invoice-details">
+                <div class="detail-row">
+                    <span class="detail-label">Invoice Number:</span>
+                    <span class="detail-value">{{ invoice.invoice_number }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Vendor:</span>
+                    <span class="detail-value">{{ invoice.vendor_name }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Due Date:</span>
+                    <span class="detail-value">{{ invoice.due_date if invoice.due_date else 'Upon Receipt' }}</span>
+                </div>
+            </div>
+
+            <div class="total-amount">
+                ${{ "%.2f"|format(invoice.total|float) }}
+            </div>
+
+            <button class="btn-confirm" onclick="confirmPayment()">
+                <i class="fas fa-check-circle"></i> Confirm Payment Received
+            </button>
+
+            <button class="btn-back" onclick="window.location.href='/'" style="background:#6b7280;">
+                <i class="fas fa-home"></i> Return to Home
+            </button>
+
+            <div class="secure-badge">
+                <i class="fas fa-shield-alt"></i> This confirmation will mark the invoice as PAID
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const token = '{{ token }}';
+        const API_BASE_URL = window.location.origin + '/api';
+
+        async function confirmPayment() {
+            const btn = document.querySelector('.btn-confirm');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/confirm-payment/${token}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('paymentBody').innerHTML = `
+                        <div style="text-align: center; padding: 20px;">
+                            <i class="fas fa-check-circle success-icon"></i>
+                            <h2 style="margin-bottom: 12px;">Payment Confirmed!</h2>
+                            <p style="color: #6b7280; margin-bottom: 24px;">
+                                Invoice #${data.invoice_number} has been marked as PAID.
+                            </p>
+                            <p style="color: #6b7280; margin-bottom: 24px; font-size: 14px;">
+                                A confirmation has been recorded. Thank you for your business!
+                            </p>
+                            <button onclick="window.location.href='/'" class="btn-confirm" style="background:#2563eb; margin-top:10px;">
+                                Return to Home
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    throw new Error(data.error || 'Payment confirmation failed');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>
